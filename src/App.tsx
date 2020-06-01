@@ -1,5 +1,6 @@
 import React, { KeyboardEvent, useState } from "react";
 import "./App.css";
+import { TextField } from "@material-ui/core";
 
 function App() {
   const [textValue, setTextValue] = useState("");
@@ -10,16 +11,19 @@ function App() {
     setTextValue("");
   };
 
-  const handleChange = (change: KeyboardEvent<HTMLTextAreaElement>) => {
+  const handleChange = (change: KeyboardEvent<HTMLDivElement>) => {
     if (
       ((change.keyCode >= 48 && change.keyCode <= 90) || // Letters & Numbers
       change.keyCode === 32 || // Space Key
       change.keyCode >= 185 || // Puncuation
+      change.keyCode === 9 || // Tab
         change.keyCode === 13) && // Enter
       change.key !== "Meta"
     ) {
       if (change.key === "Enter") {
         setTextValue(textValue + "\n");
+      } else if (change.key === "Tab") {
+        setTextValue(textValue + "\t");
       } else {
         setTextValue(textValue + change.key);
       }
@@ -31,12 +35,13 @@ function App() {
       <button onClick={clearClicked}>Clear</button>
       <button>Copy</button>
       <div>WordCount: {wordcount}</div>
-      <textarea
+      <TextField
+        multiline
         onKeyDown={handleChange}
         value={textValue}
-        readOnly={true}
         id="typeWritterField"
         autoFocus={true}
+        rows={10000}
       />
     </div>
   );

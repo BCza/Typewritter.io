@@ -8,6 +8,15 @@
 }
 
 #typeWritterField {
+  font-family: monospace;
+  font-size: 31px;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: 700;
+  line-height: 34.1px;
+}
+
+.MuiTextField-root {
   height: 2000px;
   width: 95%;
   margin-top: 50px;
