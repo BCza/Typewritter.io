@@ -1,6 +1,6 @@
 import React, { KeyboardEvent, useState } from "react";
 import "./App.css";
-import { TextField } from "@material-ui/core";
+import { TextField, Button } from "@material-ui/core";
 
 function App() {
   const [textValue, setTextValue] = useState("");
@@ -41,17 +41,21 @@ function App() {
 
   return (
     <div className="App">
-      <button onClick={clearClicked}>Clear</button>
-      <button onClick={copyClicked}>Copy</button>
-      <div>WordCount: {wordcount}</div>
       <TextField
         multiline
         onKeyDown={handleChange}
         value={textValue}
         id="typeWritterField"
         autoFocus={true}
-        rows={10000}
+        rows={10}
       />
+      <Button variant="outlined" onClick={clearClicked}>
+        Clear
+      </Button>
+      <Button variant="outlined" onClick={copyClicked}>
+        Copy
+      </Button>
+      <div>WordCount: {wordcount}</div>
     </div>
   );
 }
