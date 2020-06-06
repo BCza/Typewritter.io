@@ -51,6 +51,7 @@ function App() {
         id="typeWritterField"
         autoFocus={true}
         rows={16}
+        spellCheck={false}
       />
       <Button variant="outlined" onClick={clearClicked}>
         Clear
