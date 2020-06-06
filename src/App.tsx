@@ -5,10 +5,13 @@ import { TextField, Button } from "@material-ui/core";
 function App() {
   const [textValue, setTextValue] = useState("");
 
-  const wordcount = textValue.split(" ").length - 1;
+  const spaceRegex = /\s+/;
+
+  const wordcount = textValue.split(spaceRegex).length - 1;
 
   const clearClicked = () => {
     setTextValue("");
+    // Todo: Set focus on the text area after they type
   };
 
   const copyClicked = () => {
@@ -47,7 +50,7 @@ function App() {
         value={textValue}
         id="typeWritterField"
         autoFocus={true}
-        rows={10}
+        rows={16}
       />
       <Button variant="outlined" onClick={clearClicked}>
         Clear
