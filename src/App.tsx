@@ -4,18 +4,22 @@ import { Button } from "@material-ui/core";
 import TypeWritterFile from "./TypeWritterFile";
 
 const typeWritterId = "typeWritterField";
-const regexForSpacesBetweenWords = /\s+/;
+const spaceRegex = /\s+/;
 const enterKeyValue = "\n";
 const tabKeyValue = "\t";
+
+const wordCount: (t: string) => number = (t: string) =>
+  t.split(spaceRegex).length - 1;
+
+const setFocusOnTypeWritter = () =>
+  document.getElementById(typeWritterId)?.focus();
 
 function App() {
   const [textValue, setTextValue] = useState("");
 
-  const wordcount = textValue.split(regexForSpacesBetweenWords).length - 1;
-
   const clearClicked = () => {
     setTextValue("");
-    document.getElementById(typeWritterId)?.focus();
+    setFocusOnTypeWritter();
   };
 
   const copyClicked = () => {
@@ -26,6 +30,7 @@ function App() {
     }
 
     navigator.clipboard.writeText(copyText.innerHTML);
+    setFocusOnTypeWritter();
   };
 
   const handleChange = (change: KeyboardEvent<HTMLDivElement>) => {
@@ -68,7 +73,7 @@ function App() {
       <Button variant="outlined" onClick={copyClicked}>
         Copy
       </Button>
-      <div>WordCount: {wordcount}</div>
+      <div>WordCount: {wordCount(textValue)}</div>
     </div>
   );
 }
