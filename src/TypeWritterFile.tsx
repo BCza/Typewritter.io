@@ -1,6 +1,9 @@
 import React from "react";
 import "./App.css";
 import { TextField } from "@material-ui/core";
+import "./styling/main.css";
+import { StylesProvider } from "@material-ui/core/styles";
+import { css } from "@emotion/core";
 
 interface TWritterProps {
   typeWritterId: string;
@@ -14,16 +17,18 @@ function TypeWritterField({
   handleChange,
 }: TWritterProps) {
   return (
-    <TextField
-      multiline
-      onKeyDown={handleChange}
-      value={textValue}
-      id={typeWritterId}
-      autoFocus={true}
-      rows={16}
-      spellCheck={false}
-      InputProps={{ disableUnderline: true }}
-    />
+    <StylesProvider>
+      <TextField
+        multiline
+        onKeyDown={handleChange}
+        value={textValue}
+        id={typeWritterId}
+        autoFocus={true}
+        rows={16}
+        spellCheck={false}
+        InputProps={{ disableUnderline: true }}
+      />
+    </StylesProvider>
   );
 }
 
