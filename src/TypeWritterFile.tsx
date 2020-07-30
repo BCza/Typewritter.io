@@ -22,6 +22,7 @@ function TypeWritterField({
       autoFocus={true}
       rows={16}
       spellCheck={false}
+      InputProps={{ disableUnderline: true }}
     />
   );
 }
