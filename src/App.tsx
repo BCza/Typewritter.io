@@ -1,57 +1,66 @@
 import React, { KeyboardEvent, useState } from "react";
 import "./App.css";
-import { TextField, Button } from "@material-ui/core";
+import { Button } from "@material-ui/core";
+import TypeWritterFile from "./TypeWritterFile";
+
+const typeWritterId = "typeWritterField";
+const regexForSpacesBetweenWords = /\s+/;
+const enterKeyValue = "\n";
+const tabKeyValue = "\t";
 
 function App() {
   const [textValue, setTextValue] = useState("");
 
-  const spaceRegex = /\s+/;
-
-  const wordcount = textValue.split(spaceRegex).length - 1;
+  const wordcount = textValue.split(regexForSpacesBetweenWords).length - 1;
 
   const clearClicked = () => {
     setTextValue("");
-    // Todo: Set focus on the text area after they type
+    document.getElementById(typeWritterId)?.focus();
   };
 
   const copyClicked = () => {
     const copyText = document.getElementById("typeWritterField");
     if (!copyText) {
       alert("Sorry, could not copy text");
-    } else {
-      navigator.clipboard.writeText(copyText.innerHTML);
+      return;
     }
+
+    navigator.clipboard.writeText(copyText.innerHTML);
   };
 
   const handleChange = (change: KeyboardEvent<HTMLDivElement>) => {
+    const keyValue = change.keyCode;
+
+    // Letters & Numbers
+    // Space Key
+    // Puncuation
     if (
-      ((change.keyCode >= 48 && change.keyCode <= 90) || // Letters & Numbers
-      change.keyCode === 32 || // Space Key
-      change.keyCode >= 185 || // Puncuation
-      change.keyCode === 9 || // Tab
-        change.keyCode === 13) && // Enter
-      change.key !== "Meta"
+      (keyValue >= 48 && keyValue <= 90) ||
+      keyValue === 32 ||
+      keyValue >= 185
     ) {
-      if (change.key === "Enter") {
-        setTextValue(textValue + "\n");
-      } else if (change.key === "Tab") {
-        setTextValue(textValue + "\t");
-      } else {
-        setTextValue(textValue + change.key);
-      }
+      setTextValue(textValue + change.key);
+    }
+
+    // Enter
+    if (keyValue === 13) {
+      setTextValue(textValue + enterKeyValue);
+    }
+    // Tab
+    if (keyValue === 9) {
+      setTextValue(textValue + tabKeyValue);
+    }
+    if (change.metaKey) {
+      return;
     }
   };
 
   return (
     <div className="App">
-      <TextField
-        multiline
-        onKeyDown={handleChange}
-        value={textValue}
-        id="typeWritterField"
-        autoFocus={true}
-        rows={16}
-        spellCheck={false}
+      <TypeWritterFile
+        handleChange={handleChange}
+        textValue={textValue}
+        typeWritterId={typeWritterId}
       />
       <Button variant="outlined" onClick={clearClicked}>
         Clear
