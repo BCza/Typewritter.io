@@ -9,8 +9,6 @@ const spaceRegex = /\s+/;
 const enterKeyValue = "\n";
 const tabKeyValue = "\t";
 
-// const [showChickenCheck, setShowChickenCheck] = useState(true);
-
 const wordCount: (t: string) => number = (t: string) =>
   t.split(spaceRegex).length - 1;
 
@@ -19,9 +17,10 @@ const setFocusOnTypeWritter = () =>
 
 function App() {
   const [textValue, setTextValue] = useState("");
+  const [showChickenCheck, setShowChickenCheck] = useState(true);
 
   const clearClicked = () => {
-    // setShowChickenCheck(true);
+    setShowChickenCheck(true);
     setTextValue("");
     setFocusOnTypeWritter();
   };
@@ -64,13 +63,9 @@ function App() {
     }
   };
 
-  const props = {
-    showChickenCheck: true,
-  };
-
   return (
     <div className="App">
-      <ChickenCheck props={props} />
+      <ChickenCheck showChickenCheck={showChickenCheck} />
       <TypeWritterFile
         handleChange={handleChange}
         textValue={textValue}
