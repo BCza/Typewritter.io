@@ -2,11 +2,14 @@ import React, { KeyboardEvent, useState } from "react";
 import "./App.css";
 import { Button } from "@material-ui/core";
 import TypeWritterFile from "./TypeWritterFile";
+import ChickenCheck from "../src/styling/components/ChickenCheck";
 
 const typeWritterId = "typeWritterField";
 const spaceRegex = /\s+/;
 const enterKeyValue = "\n";
 const tabKeyValue = "\t";
+
+// const [showChickenCheck, setShowChickenCheck] = useState(true);
 
 const wordCount: (t: string) => number = (t: string) =>
   t.split(spaceRegex).length - 1;
@@ -18,6 +21,7 @@ function App() {
   const [textValue, setTextValue] = useState("");
 
   const clearClicked = () => {
+    // setShowChickenCheck(true);
     setTextValue("");
     setFocusOnTypeWritter();
   };
@@ -60,8 +64,13 @@ function App() {
     }
   };
 
+  const props = {
+    showChickenCheck: true,
+  };
+
   return (
     <div className="App">
+      <ChickenCheck props={props} />
       <TypeWritterFile
         handleChange={handleChange}
         textValue={textValue}
