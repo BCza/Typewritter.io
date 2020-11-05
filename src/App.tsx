@@ -2,6 +2,7 @@ import React, { KeyboardEvent, useState } from "react";
 import "./App.css";
 import { Button } from "@material-ui/core";
 import TypeWritterFile from "./TypeWritterFile";
+import ChickenCheck from "../src/styling/components/ChickenCheck";
 
 const typeWritterId = "typeWritterField";
 const spaceRegex = /\s+/;
@@ -16,8 +17,10 @@ const setFocusOnTypeWritter = () =>
 
 function App() {
   const [textValue, setTextValue] = useState("");
+  const [showChickenCheck, setShowChickenCheck] = useState(true);
 
   const clearClicked = () => {
+    setShowChickenCheck(true);
     setTextValue("");
     setFocusOnTypeWritter();
   };
@@ -62,6 +65,7 @@ function App() {
 
   return (
     <div className="App">
+      {/* <ChickenCheck showChickenCheck={showChickenCheck} /> */}
       <TypeWritterFile
         handleChange={handleChange}
         textValue={textValue}
