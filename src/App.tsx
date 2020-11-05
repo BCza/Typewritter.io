@@ -65,7 +65,7 @@ function App() {
 
   return (
     <div className="App">
-      <ChickenCheck showChickenCheck={showChickenCheck} />
+      {/* <ChickenCheck showChickenCheck={showChickenCheck} /> */}
       <TypeWritterFile
         handleChange={handleChange}
         textValue={textValue}
