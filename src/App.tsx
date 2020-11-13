@@ -2,7 +2,8 @@ import React, { KeyboardEvent, useState } from "react";
 import "./App.css";
 import { Button } from "@material-ui/core";
 import TypeWritterFile from "./TypeWritterFile";
-import ChickenCheck from "../src/styling/components/ChickenCheck";
+// import ChickenCheck from "../src/styling/components/ChickenCheck";
+import CopyToClipboard from "react-copy-to-clipboard";
 
 const typeWritterId = "typeWritterField";
 const spaceRegex = /\s+/;
@@ -17,22 +18,11 @@ const setFocusOnTypeWritter = () =>
 
 function App() {
   const [textValue, setTextValue] = useState("");
-  const [showChickenCheck, setShowChickenCheck] = useState(true);
+  // const [showChickenCheck, setShowChickenCheck] = useState(true);
 
   const clearClicked = () => {
-    setShowChickenCheck(true);
+    // setShowChickenCheck(true);
     setTextValue("");
-    setFocusOnTypeWritter();
-  };
-
-  const copyClicked = () => {
-    const copyText = document.getElementById("typeWritterField");
-    if (!copyText) {
-      alert("Sorry, could not copy text");
-      return;
-    }
-
-    navigator.clipboard.writeText(copyText.innerHTML);
     setFocusOnTypeWritter();
   };
 
@@ -71,12 +61,17 @@ function App() {
         textValue={textValue}
         typeWritterId={typeWritterId}
       />
-      <Button variant="outlined" onClick={clearClicked}>
+      <Button
+        variant="outlined"
+        onClick={clearClicked}
+        style={{ margin: "0px 40px 0px 0px" }}
+      >
         Clear
       </Button>
-      <Button variant="outlined" onClick={copyClicked}>
-        Copy
-      </Button>
+
+      <CopyToClipboard text={textValue}>
+        <Button variant="outlined">Copy</Button>
+      </CopyToClipboard>
       <div>WordCount: {wordCount(textValue)}</div>
     </div>
   );
