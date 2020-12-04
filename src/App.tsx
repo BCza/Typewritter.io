@@ -2,6 +2,7 @@ import React, { KeyboardEvent, useState } from "react";
 import "./App.css";
 import { Button } from "@material-ui/core";
 import TypeWritterFile from "./TypeWritterFile";
+import TotalTimer from "./styling/components/Timer";
 // import ChickenCheck from "../src/styling/components/ChickenCheck";
 import CopyToClipboard from "react-copy-to-clipboard";
 
@@ -55,6 +56,7 @@ function App() {
 
   return (
     <div className="App">
+      <TotalTimer />
       {/* <ChickenCheck showChickenCheck={showChickenCheck} /> */}
       <TypeWritterFile
         handleChange={handleChange}
@@ -66,7 +68,7 @@ function App() {
         onClick={clearClicked}
         style={{ margin: "0px 40px 0px 0px" }}
       >
-        Clear
+        DELETE
       </Button>
 
       <CopyToClipboard text={textValue}>
