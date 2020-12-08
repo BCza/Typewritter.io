@@ -3,7 +3,7 @@ import "./App.css";
 import { Button } from "@material-ui/core";
 import TypeWritterFile from "./TypeWritterFile";
 import TotalTimer from "./components/Timer";
-// import ChickenCheck from "../src/styling/components/ChickenCheck";
+import ChickenCheck from "./components/ChickenCheck";
 import CopyToClipboard from "react-copy-to-clipboard";
 
 const typeWritterId = "typeWritterField";
@@ -20,10 +20,10 @@ const setFocusOnTypeWritter = () =>
 
 function App() {
   const [textValue, setTextValue] = useState("");
-  // const [showChickenCheck, setShowChickenCheck] = useState(true);
+  const [showChickenCheck, setShowChickenCheck] = useState(false);
 
   const clearClicked = () => {
-    // setShowChickenCheck(true);
+    setShowChickenCheck(true);
     setTextValue("");
     setFocusOnTypeWritter();
   };
@@ -57,7 +57,7 @@ function App() {
   return (
     <div className="App">
       <TotalTimer />
-      {/* <ChickenCheck showChickenCheck={showChickenCheck} /> */}
+      <ChickenCheck showChickenCheck={showChickenCheck} />
       <TypeWritterFile
         handleChange={handleChange}
         textValue={textValue}
