@@ -11,6 +11,7 @@ const spaceRegex = /\s+/;
 const enterKeyValue = "\n";
 const tabKeyValue = "\t";
 
+const noInputValues = ["Delete", "Backspace", "Shift", "Control"];
 const wordCount: (t: string) => number = (t: string) =>
   t.split(spaceRegex).length - 1;
 
@@ -28,30 +29,29 @@ function App() {
   };
 
   const handleChange = (change: KeyboardEvent<HTMLDivElement>) => {
-    const keyValue = change.keyCode;
+    const keyValue = change.key;
 
-    // Letters & Numbers
-    // Space Key
-    // Puncuation
-    if (
-      (keyValue >= 48 && keyValue <= 90) ||
-      keyValue === 32 ||
-      keyValue >= 185
-    ) {
-      setTextValue(textValue + change.key);
-    }
+    console.log(change.key);
 
-    // Enter
-    if (keyValue === 13) {
-      setTextValue(textValue + enterKeyValue);
-    }
-    // Tab
-    if (keyValue === 9) {
-      setTextValue(textValue + tabKeyValue);
-    }
-    if (change.metaKey) {
+    if (noInputValues.includes(keyValue)) {
       return;
     }
+
+    if (keyValue === "Enter") {
+      setTextValue(textValue + enterKeyValue);
+      return;
+    } else if (keyValue === "Tab") {
+      setTextValue(textValue + tabKeyValue);
+      setFocusOnTypeWritter();
+      change.preventDefault();
+      return;
+    } else if (change.metaKey) {
+      // TODO make sure that we can do things like select all, copy and paste
+      return;
+    }
+
+    // Default Action
+    setTextValue(textValue + keyValue);
   };
 
   return (
