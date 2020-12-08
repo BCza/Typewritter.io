@@ -57,7 +57,12 @@ function App() {
   return (
     <div className="App">
       <TotalTimer />
-      <ChickenCheck showChickenCheck={showChickenCheck} />
+      <ChickenCheck
+        showChickenCheck={showChickenCheck}
+        message="Are you sure you want to delete this?"
+        onYesClicked={() => console.log("yes")}
+        onNoClicked={() => console.log("no")}
+      />
       <TypeWritterFile
         handleChange={handleChange}
         textValue={textValue}
