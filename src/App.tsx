@@ -76,7 +76,7 @@ function App() {
         DELETE
       </Button>
 
-      <CopyToClipboard text={textValue}>
+      <CopyToClipboard text={textValue} options={{ format: "text/plain" }}>
         <Button variant="outlined">Copy</Button>
       </CopyToClipboard>
       <div>WordCount: {wordCount(textValue)}</div>
