@@ -12,6 +12,7 @@ const enterKeyValue = "\n";
 const tabKeyValue = "\t";
 
 const noInputValues = ["Delete", "Backspace", "Shift", "Control"];
+
 const wordCount: (t: string) => number = (t: string) =>
   t.split(spaceRegex).length - 1;
 
@@ -22,9 +23,7 @@ function App() {
   const [textValue, setTextValue] = useState("");
   const [showChickenCheck, setShowChickenCheck] = useState(false);
 
-  const clearClicked = () => {
-    setShowChickenCheck(true);
-  };
+  const clearClicked = () => setShowChickenCheck(true);
 
   const onChickenYesClicked = () => {
     setTextValue("");
@@ -32,14 +31,10 @@ function App() {
     setShowChickenCheck(false);
   };
 
-  const onChickenNoClicked = () => {
-    setShowChickenCheck(false);
-  };
+  const onChickenNoClicked = () => setShowChickenCheck(false);
 
   const handleChange = (change: KeyboardEvent<HTMLDivElement>) => {
     const keyValue = change.key;
-
-    console.log(change.key);
 
     if (noInputValues.includes(keyValue)) {
       return;
