@@ -24,8 +24,16 @@ function App() {
 
   const clearClicked = () => {
     setShowChickenCheck(true);
+  };
+
+  const onChickenYesClicked = () => {
     setTextValue("");
     setFocusOnTypeWritter();
+    setShowChickenCheck(false);
+  };
+
+  const onChickenNoClicked = () => {
+    setShowChickenCheck(false);
   };
 
   const handleChange = (change: KeyboardEvent<HTMLDivElement>) => {
@@ -60,8 +68,8 @@ function App() {
       <ChickenCheck
         showChickenCheck={showChickenCheck}
         message="Are you sure you want to delete this?"
-        onYesClicked={() => console.log("yes")}
-        onNoClicked={() => console.log("no")}
+        onYesClicked={onChickenYesClicked}
+        onNoClicked={onChickenNoClicked}
       />
       <TypeWritterFile
         handleChange={handleChange}
