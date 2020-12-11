@@ -5,6 +5,7 @@ import TypeWritterFile from "./TypeWritterFile";
 import TotalTimer from "./components/Timer";
 import ChickenCheck from "./components/ChickenCheck";
 import CopyToClipboard from "react-copy-to-clipboard";
+import BottomBar from "./components/BottomBar";
 
 const typeWritterId = "typeWritterField";
 const spaceRegex = /\s+/;
@@ -71,18 +72,12 @@ function App() {
         textValue={textValue}
         typeWritterId={typeWritterId}
       />
-      <Button
-        variant="outlined"
-        onClick={clearClicked}
-        style={{ margin: "0px 40px 0px 0px" }}
-      >
-        DELETE
-      </Button>
 
-      <CopyToClipboard text={textValue} options={{ format: "text/plain" }}>
-        <Button variant="outlined">Copy</Button>
-      </CopyToClipboard>
-      <div>WordCount: {wordCount(textValue)}</div>
+      <BottomBar
+        clearClicked={clearClicked}
+        wordCount={wordCount}
+        textValue={textValue}
+      ></BottomBar>
     </div>
   );
 }
