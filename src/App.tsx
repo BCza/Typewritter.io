@@ -1,9 +1,12 @@
 import React, { KeyboardEvent, useState } from "react";
 import "./App.css";
+import "./styling/main.css";
 import TypeWritterFile from "./TypeWritterFile";
 import TotalTimer from "./components/Timer";
 import ChickenCheck from "./components/ChickenCheck";
 import BottomBar from "./components/BottomBar";
+import IconButton from "@material-ui/core/IconButton";
+import HighlightOffIcon from "@material-ui/icons/HighlightOff";
 
 const typeWritterId = "typeWritterField";
 const spaceRegex = /\s+/;
@@ -58,6 +61,9 @@ function App() {
 
   return (
     <div className="App">
+      <IconButton onClick={clearClicked} id="DeleteButton">
+        <HighlightOffIcon style={{ fontSize: "48px", color: "black" }} />
+      </IconButton>
       <TotalTimer />
       <ChickenCheck
         showChickenCheck={showChickenCheck}
@@ -70,7 +76,6 @@ function App() {
         textValue={textValue}
         typeWritterId={typeWritterId}
       />
-
       <BottomBar
         clearClicked={clearClicked}
         wordCount={wordCount}

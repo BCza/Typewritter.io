@@ -1,11 +1,9 @@
 .App {
-  text-align: center;
-}
+  text-align: center; }
 
 .App-logo {
   height: 40vmin;
-  pointer-events: none;
-}
+  pointer-events: none; }
 
 #typeWritterField {
   font-family: monospace;
@@ -15,41 +13,35 @@
   font-weight: 500;
   line-height: 34.1px;
   border-color: transparent;
-
   border: none;
   overflow: auto;
   outline: none;
-
   -webkit-box-shadow: none;
   -moz-box-shadow: none;
   box-shadow: none;
-
-  resize: none; /*remove the resize handle on the bottom right*/
-}
+  resize: none;
+  /*remove the resize handle on the bottom right*/ }
 
 .MuiTextField-root {
   height: 80%;
   width: 95%;
-  margin-top: 50px;
-  letter-spacing: 0.15em; /* Adjust as needed */
+  margin-top: 180px;
+  letter-spacing: 0.15em;
+  /* Adjust as needed */
   cursor: auto;
   border-color: transparent;
-
   border: none;
   overflow: auto;
   outline: none;
-
   -webkit-box-shadow: none;
   -moz-box-shadow: none;
   box-shadow: none;
-
-  resize: none; /*remove the resize handle on the bottom right*/
-}
+  resize: none;
+  /*remove the resize handle on the bottom right*/ }
 
 input:focus,
 textarea {
-  outline: none !important;
-}
+  outline: none !important; }
 
 /* #typeWritterField h1 {
   overflow: hidden; /* Ensures the content is not revealed until the animation 

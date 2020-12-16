@@ -46,19 +46,8 @@ export default function BottomAppBar(props: BottomAppBarProps) {
             alignContent="center"
             width={"100%"}
           >
-            <Box display="flex">
-              <Box flexGrow={1}>
-                <Button
-                  variant="outlined"
-                  onClick={clearClicked}
-                  style={{ margin: "0% 16% 0% 0%" }}
-                  className={classes.buttons}
-                >
-                  DELETE
-                </Button>
-              </Box>
-
-              <Box flexGrow={1}>
+            <Box display="flex" flexGrow={1} justifyContent="flex-start">
+              <Box>
                 <CopyToClipboard
                   text={textValue}
                   options={{ format: "text/plain" }}
@@ -70,7 +59,10 @@ export default function BottomAppBar(props: BottomAppBarProps) {
               </Box>
             </Box>
 
-            <Box display="flex" flexGrow={3} justifyContent={"flex-end"}>
+            <Box flexGrow={1} />
+            <Box flexGrow={1} />
+
+            <Box display="flex" flexGrow={1} justifyContent={"flex-end"}>
               <Box>
                 <div className={classes.grow} />
                 <div className={classes.buttons}>
