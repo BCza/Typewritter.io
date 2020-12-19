@@ -7,16 +7,18 @@ import ChickenCheck from "./components/ChickenCheck";
 import BottomBar from "./components/BottomBar";
 import IconButton from "@material-ui/core/IconButton";
 import HighlightOffIcon from "@material-ui/icons/HighlightOff";
-// import _times from '@lodash'
+import _times from "lodash/times";
 
 const typeWritterId = "typeWritterField";
 const spaceRegex = /\s+/;
 const enterKeyValue = "\n";
 const tabKeyValue = "\t";
 
-// const funcNoInputArray =
+const funcNoInputArray = () => _times(12, (i) => `F${i + 1}`);
 
-const noInputValues = ["Delete", "Backspace", "Shift", "Control"];
+const noInputValues = ["Delete", "Backspace", "Shift", "Control"].concat(
+  funcNoInputArray()
+);
 
 const wordCount: (t: string) => number = (t: string) =>
   t.split(spaceRegex).length - 1;
