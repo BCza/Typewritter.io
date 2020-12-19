@@ -7,11 +7,14 @@ import ChickenCheck from "./components/ChickenCheck";
 import BottomBar from "./components/BottomBar";
 import IconButton from "@material-ui/core/IconButton";
 import HighlightOffIcon from "@material-ui/icons/HighlightOff";
+// import _times from '@lodash'
 
 const typeWritterId = "typeWritterField";
 const spaceRegex = /\s+/;
 const enterKeyValue = "\n";
 const tabKeyValue = "\t";
+
+// const funcNoInputArray =
 
 const noInputValues = ["Delete", "Backspace", "Shift", "Control"];
 
@@ -61,8 +64,14 @@ function App() {
 
   return (
     <div className="App">
-      <IconButton onClick={clearClicked} id="DeleteButton">
-        <HighlightOffIcon style={{ fontSize: "48px", color: "black" }} />
+      <IconButton
+        onClick={clearClicked}
+        id="DeleteButton"
+        style={{ height: "50px", width: "50px" }}
+      >
+        <HighlightOffIcon
+          style={{ fontSize: "48px", color: "black", paddingTop: "8px" }}
+        />
       </IconButton>
       <TotalTimer />
       <ChickenCheck
