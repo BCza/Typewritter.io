@@ -24,6 +24,7 @@ const useStyles = makeStyles((theme: Theme) =>
 
 type BottomAppBarProps = {
   clearClicked: () => void;
+  copyClicked: () => void;
   textValue: string;
   wordCount: (text: string) => number;
 };
@@ -31,7 +32,7 @@ type BottomAppBarProps = {
 export default function BottomAppBar(props: BottomAppBarProps) {
   const classes = useStyles();
 
-  const { clearClicked, textValue, wordCount } = props;
+  const { clearClicked, textValue, wordCount, copyClicked } = props;
 
   return (
     <React.Fragment>
@@ -52,7 +53,11 @@ export default function BottomAppBar(props: BottomAppBarProps) {
                   text={textValue}
                   options={{ format: "text/plain" }}
                 >
-                  <Button variant="outlined" className={classes.buttons}>
+                  <Button
+                    variant="outlined"
+                    className={classes.buttons}
+                    onClick={copyClicked}
+                  >
                     Copy
                   </Button>
                 </CopyToClipboard>

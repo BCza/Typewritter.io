@@ -6,6 +6,8 @@ import TotalTimer from "./components/Timer";
 import ChickenCheck from "./components/ChickenCheck";
 import BottomBar from "./components/BottomBar";
 import IconButton from "@material-ui/core/IconButton";
+import CloseIcon from "@material-ui/icons/Close";
+import Snackbar from "@material-ui/core/Snackbar";
 import HighlightOffIcon from "@material-ui/icons/HighlightOff";
 import _times from "lodash/times";
 
@@ -16,9 +18,13 @@ const tabKeyValue = "\t";
 
 const funcNoInputArray = () => _times(12, (i) => `F${i + 1}`);
 
-const noInputValues = ["Delete", "Backspace", "Shift", "Control"].concat(
-  funcNoInputArray()
-);
+const noInputValues = [
+  "Delete",
+  "Backspace",
+  "Shift",
+  "Control",
+  "Escape",
+].concat(funcNoInputArray());
 
 const wordCount: (t: string) => number = (t: string) =>
   t.split(spaceRegex).length - 1;
@@ -29,8 +35,11 @@ const setFocusOnTypeWritter = () =>
 function App() {
   const [textValue, setTextValue] = useState("");
   const [showChickenCheck, setShowChickenCheck] = useState(false);
+  const [showSnackBar, setShowSnackBar] = useState(false);
 
   const clearClicked = () => setShowChickenCheck(true);
+
+  const onCopyClicked = () => setShowSnackBar(true);
 
   const onChickenYesClicked = () => {
     setTextValue("");
@@ -91,7 +100,28 @@ function App() {
         clearClicked={clearClicked}
         wordCount={wordCount}
         textValue={textValue}
+        copyClicked={onCopyClicked}
       ></BottomBar>
+      <Snackbar
+        anchorOrigin={{
+          vertical: "bottom",
+          horizontal: "right",
+        }}
+        open={showSnackBar}
+        autoHideDuration={6000}
+        onClose={() => setShowSnackBar(false)}
+        message="Copied Successfully!"
+        action={
+          <React.Fragment>
+            <IconButton
+              onClick={() => setShowSnackBar(false)}
+              style={{ backgroundColor: "white" }}
+            >
+              <CloseIcon fontSize="small" />
+            </IconButton>
+          </React.Fragment>
+        }
+      />
     </div>
   );
 }
