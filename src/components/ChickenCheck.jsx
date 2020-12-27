@@ -1,4 +1,7 @@
 import React from "react";
+import Card from "@material-ui/core/Card";
+import CardContent from "@material-ui/core/CardContent";
+import CardActions from "@material-ui/core/CardActions";
 // import "./App.css";
 
 const ChickenCheck = ({
@@ -12,11 +15,19 @@ const ChickenCheck = ({
   }
 
   return (
-    <div className="chickenCheck" style={{ border: 4, borderColor: "green" }}>
-      <p> {message}</p>
-      <button onClick={onYesClicked}> Yes </button>
-      <button onClick={onNoClicked}> NO </button>
-    </div>
+    <Card variant="outlined">
+      <CardContent>
+        <div className="chickenCheck">
+          <p> {message}</p>
+        </div>
+      </CardContent>
+      <CardActions>
+        <div>
+          <button onClick={onYesClicked}> Yes </button>
+          <button onClick={onNoClicked}> NO </button>
+        </div>
+      </CardActions>
+    </Card>
   );
 };
 

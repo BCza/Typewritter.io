@@ -65,7 +65,6 @@ function App() {
       change.preventDefault();
       return;
     } else if (change.metaKey) {
-      // TODO make sure that we can do things like select all, copy and paste
       return;
     }
 
