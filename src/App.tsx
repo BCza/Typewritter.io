@@ -1,17 +1,29 @@
 import React, { KeyboardEvent, useState } from "react";
-import "./App.css";
-import { Button } from "@material-ui/core";
+import "./styling/main.css";
 import TypeWritterFile from "./TypeWritterFile";
 import TotalTimer from "./components/Timer";
 import ChickenCheck from "./components/ChickenCheck";
-import CopyToClipboard from "react-copy-to-clipboard";
+import BottomBar from "./components/BottomBar";
+import IconButton from "@material-ui/core/IconButton";
+import CloseIcon from "@material-ui/icons/Close";
+import Snackbar from "@material-ui/core/Snackbar";
+import HighlightOffIcon from "@material-ui/icons/HighlightOff";
+import _times from "lodash/times";
 
 const typeWritterId = "typeWritterField";
 const spaceRegex = /\s+/;
 const enterKeyValue = "\n";
 const tabKeyValue = "\t";
 
-const noInputValues = ["Delete", "Backspace", "Shift", "Control"];
+const funcNoInputArray = () => _times(12, (i) => `F${i + 1}`);
+
+const noInputValues = [
+  "Delete",
+  "Backspace",
+  "Shift",
+  "Control",
+  "Escape",
+].concat(funcNoInputArray());
 
 const wordCount: (t: string) => number = (t: string) =>
   t.split(spaceRegex).length - 1;
@@ -22,8 +34,11 @@ const setFocusOnTypeWritter = () =>
 function App() {
   const [textValue, setTextValue] = useState("");
   const [showChickenCheck, setShowChickenCheck] = useState(false);
+  const [showSnackBar, setShowSnackBar] = useState(false);
 
   const clearClicked = () => setShowChickenCheck(true);
+
+  const onCopyClicked = () => setShowSnackBar(true);
 
   const onChickenYesClicked = () => {
     setTextValue("");
@@ -49,7 +64,6 @@ function App() {
       change.preventDefault();
       return;
     } else if (change.metaKey) {
-      // TODO make sure that we can do things like select all, copy and paste
       return;
     }
 
@@ -59,6 +73,15 @@ function App() {
 
   return (
     <div className="App">
+      <IconButton
+        onClick={clearClicked}
+        id="DeleteButton"
+        style={{ height: "50px", width: "50px" }}
+      >
+        <HighlightOffIcon
+          style={{ fontSize: "48px", color: "black", paddingTop: "8px" }}
+        />
+      </IconButton>
       <TotalTimer />
       <ChickenCheck
         showChickenCheck={showChickenCheck}
@@ -71,18 +94,32 @@ function App() {
         textValue={textValue}
         typeWritterId={typeWritterId}
       />
-      <Button
-        variant="outlined"
-        onClick={clearClicked}
-        style={{ margin: "0px 40px 0px 0px" }}
-      >
-        DELETE
-      </Button>
-
-      <CopyToClipboard text={textValue} options={{ format: "text/plain" }}>
-        <Button variant="outlined">Copy</Button>
-      </CopyToClipboard>
-      <div>WordCount: {wordCount(textValue)}</div>
+      <BottomBar
+        clearClicked={clearClicked}
+        wordCount={wordCount}
+        textValue={textValue}
+        copyClicked={onCopyClicked}
+      ></BottomBar>
+      <Snackbar
+        anchorOrigin={{
+          vertical: "bottom",
+          horizontal: "right",
+        }}
+        open={showSnackBar}
+        autoHideDuration={6000}
+        onClose={() => setShowSnackBar(false)}
+        message="Copied Successfully!"
+        action={
+          <React.Fragment>
+            <IconButton
+              onClick={() => setShowSnackBar(false)}
+              style={{ backgroundColor: "white" }}
+            >
+              <CloseIcon fontSize="small" />
+            </IconButton>
+          </React.Fragment>
+        }
+      />
     </div>
   );
 }
