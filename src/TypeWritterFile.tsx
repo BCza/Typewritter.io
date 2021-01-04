@@ -1,5 +1,4 @@
 import React from "react";
-import "./App.css";
 import { TextField } from "@material-ui/core";
 import "./styling/main.css";
 import { StylesProvider } from "@material-ui/core/styles";

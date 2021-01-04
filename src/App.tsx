@@ -1,5 +1,4 @@
 import React, { KeyboardEvent, useState } from "react";
-import "./App.css";
 import "./styling/main.css";
 import TypeWritterFile from "./TypeWritterFile";
 import TotalTimer from "./components/Timer";
