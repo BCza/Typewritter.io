@@ -3,6 +3,7 @@ import { createStyles, Theme, makeStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import Toolbar from "@material-ui/core/Toolbar";
+import TotalTimer from "./Timer";
 import Button from "@material-ui/core/Button";
 import Box from "@material-ui/core/Box";
 import CopyToClipboard from "react-copy-to-clipboard";
@@ -40,7 +41,6 @@ export default function BottomAppBar(props: BottomAppBarProps) {
       <CssBaseline />
       <AppBar position="fixed" className={classes.appBar}>
         <Toolbar>
-          {/* <div className={classes.grow} /> */}
           <Box
             display="flex"
             flexDirection="row"
@@ -49,9 +49,9 @@ export default function BottomAppBar(props: BottomAppBarProps) {
             width={"100%"}
           >
             <Box display="flex" flexGrow={2} justifyContent="flex-start">
+              <TotalTimer />
               <Button
                 onClick={clearClicked}
-                // id="DeleteButton"
                 className={classes.buttons}
                 variant="outlined"
                 >
@@ -74,13 +74,11 @@ export default function BottomAppBar(props: BottomAppBarProps) {
             <Box flexGrow={1} />
             <Box flexGrow={1} />
 
-            <Box display="flex" flexGrow={1} justifyContent={"flex-end"}>
-              <Box>
+            <Box display="flex" flexGrow={2} justifyContent={"flex-end"}>
                 <div className={classes.grow} />
                 <div className={classes.buttons}>
                   <h2>Word Count: {wordCount(textValue)}</h2>
                 </div>
-              </Box>
             </Box>
           </Box>
         </Toolbar>

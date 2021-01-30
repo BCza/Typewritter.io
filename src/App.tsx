@@ -1,13 +1,11 @@
 import React, { KeyboardEvent, useState } from "react";
 import "./styling/main.css";
 import TypeWritterFile from "./TypeWritterFile";
-import TotalTimer from "./components/Timer";
 import ChickenCheck from "./components/ChickenCheck";
 import BottomBar from "./components/BottomBar";
 import IconButton from "@material-ui/core/IconButton";
 import CloseIcon from "@material-ui/icons/Close";
 import Snackbar from "@material-ui/core/Snackbar";
-import HighlightOffIcon from "@material-ui/icons/HighlightOff";
 import _times from "lodash/times";
 
 const typeWritterId = "typeWritterField";
@@ -73,7 +71,6 @@ function App() {
 
   return (
     <div className="App">
-      <TotalTimer />
       <ChickenCheck
         showChickenCheck={showChickenCheck}
         message="Are you sure you want to delete this?"
