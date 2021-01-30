@@ -18,6 +18,7 @@ const useStyles = makeStyles((theme: Theme) =>
     buttons: {
       color: "white",
       borderColor: "white",
+      marginLeft: "2%",
     },
   })
 );
@@ -47,8 +48,15 @@ export default function BottomAppBar(props: BottomAppBarProps) {
             alignContent="center"
             width={"100%"}
           >
-            <Box display="flex" flexGrow={1} justifyContent="flex-start">
-              <Box>
+            <Box display="flex" flexGrow={2} justifyContent="flex-start">
+              <Button
+                onClick={clearClicked}
+                // id="DeleteButton"
+                className={classes.buttons}
+                variant="outlined"
+                >
+                  Delete
+                </Button>
                 <CopyToClipboard
                   text={textValue}
                   options={{ format: "text/plain" }}
@@ -61,7 +69,6 @@ export default function BottomAppBar(props: BottomAppBarProps) {
                     Copy
                   </Button>
                 </CopyToClipboard>
-              </Box>
             </Box>
 
             <Box flexGrow={1} />

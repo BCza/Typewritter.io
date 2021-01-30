@@ -73,15 +73,6 @@ function App() {
 
   return (
     <div className="App">
-      <IconButton
-        onClick={clearClicked}
-        id="DeleteButton"
-        style={{ height: "50px", width: "50px" }}
-      >
-        <HighlightOffIcon
-          style={{ fontSize: "48px", color: "black", paddingTop: "8px" }}
-        />
-      </IconButton>
       <TotalTimer />
       <ChickenCheck
         showChickenCheck={showChickenCheck}
