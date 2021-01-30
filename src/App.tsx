@@ -3,9 +3,8 @@ import "./styling/main.css";
 import TypeWritterFile from "./TypeWritterFile";
 import ChickenCheck from "./components/ChickenCheck";
 import BottomBar from "./components/BottomBar";
-import IconButton from "@material-ui/core/IconButton";
-import CloseIcon from "@material-ui/icons/Close";
-import Snackbar from "@material-ui/core/Snackbar";
+import CopySuccessSnackBar from './components/CopySuccessSnackBar';
+
 import _times from "lodash/times";
 
 const typeWritterId = "typeWritterField";
@@ -88,25 +87,9 @@ function App() {
         textValue={textValue}
         copyClicked={onCopyClicked}
       ></BottomBar>
-      <Snackbar
-        anchorOrigin={{
-          vertical: "bottom",
-          horizontal: "right",
-        }}
-        open={showSnackBar}
-        autoHideDuration={6000}
-        onClose={() => setShowSnackBar(false)}
-        message="Copied Successfully!"
-        action={
-          <React.Fragment>
-            <IconButton
-              onClick={() => setShowSnackBar(false)}
-              style={{ backgroundColor: "white" }}
-            >
-              <CloseIcon fontSize="small" />
-            </IconButton>
-          </React.Fragment>
-        }
+      <CopySuccessSnackBar 
+        onClose={()=> setShowSnackBar(false)}
+        showSnackBar={showSnackBar} 
       />
     </div>
   );
