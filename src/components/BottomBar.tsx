@@ -20,6 +20,7 @@ const useStyles = makeStyles((theme: Theme) =>
       color: "white",
       borderColor: "white",
       marginLeft: "2%",
+      height: "75%",
     },
   })
 );
@@ -48,7 +49,7 @@ export default function BottomAppBar(props: BottomAppBarProps) {
             alignContent="center"
             width={"100%"}
           >
-            <Box display="flex" flexGrow={2} justifyContent="flex-start">
+            <Box display="flex" flexGrow={2} justifyContent="flex-start" alignItems="center">
               <TotalTimer />
               <Button
                 onClick={clearClicked}
