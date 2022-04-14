@@ -6,14 +6,14 @@ import BottomBar from "./components/BottomBar";
 import IconButton from "@material-ui/core/IconButton";
 import CloseIcon from "@material-ui/icons/Close";
 import Snackbar from "@material-ui/core/Snackbar";
-import _times from "lodash/times";
 
 const typeWritterId = "typeWritterField";
 const spaceRegex = /\s+/;
 const enterKeyValue = "\n";
 const tabKeyValue = "\t";
 
-const funcNoInputArray = () => _times(12, (i) => `F${i + 1}`);
+const funcNoInputArray = () =>
+  Array.from(Array(12).keys()).map((i: number) => `F${i + 1}`);
 
 const noInputValues = [
   "Delete",
