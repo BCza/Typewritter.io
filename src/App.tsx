@@ -3,9 +3,9 @@ import "./styling/main.css";
 import TypeWritterFile from "./TypeWritterFile";
 import ChickenCheck from "./components/ChickenCheck";
 import BottomBar from "./components/BottomBar";
-import IconButton from "@material-ui/core/IconButton";
-import CloseIcon from "@material-ui/icons/Close";
-import Snackbar from "@material-ui/core/Snackbar";
+import IconButton from "@mui/material/IconButton";
+// import CloseIcon from "@material-ui/icons/Close";
+import Snackbar from "@mui/material/Snackbar";
 
 const typeWritterId = "typeWritterField";
 const spaceRegex = /\s+/;
@@ -103,7 +103,7 @@ function App() {
               onClick={() => setShowSnackBar(false)}
               style={{ backgroundColor: "white" }}
             >
-              <CloseIcon fontSize="small" />
+              {/* <closeIcon fontSize="small" /> */}
             </IconButton>
           </React.Fragment>
         }
